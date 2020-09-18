@@ -6,11 +6,16 @@
   "author": "duynn <wasahara11111@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^5.3.0",
     "express": "^4.17.1"
   },
   "scripts": {
-    "dev": "cd client && yarn start && cd .. && yarn start",
-    "start": "node index.js"
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn client\" \"yarn server\" ",
+    "dev:server": "cd client && yarn build && cd .. && yarn start",
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
   }
 }
